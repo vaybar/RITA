@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks>
+    <Pages drawer-with-page="yes">
+        <Page page-name="defaultPage" page-package="misrobots" page-type="advanced" page-color="138 138 138" page-width="1366" page-infullview="yes" page-drawer="defaultPage">
+            <PageBlocks>
+                <Block id="6070" genus-name="doNothing" has-focus="yes">
+                    <Location>
+                        <X>157</X>
+                        <Y>452</Y>
+                    </Location>
+                    <BeforeBlockId>5152</BeforeBlockId>
+                </Block>
+                <Block id="5152" genus-name="onBattleEnded">
+                    <Location>
+                        <X>20</X>
+                        <Y>423</Y>
+                    </Location>
+                    <Sockets num-sockets="2">
+                        <BlockConnector connector-kind="socket" connector-type="proc-param" init-type="proc-param" label="event" position-type="single" con-block-id="5203"/>
+                        <BlockConnector connector-kind="socket" connector-type="cmd" init-type="cmd" label="" position-type="single" con-block-id="6070"/>
+                    </Sockets>
+                </Block>
+                <Block id="5203" genus-name="BattleEndedEvent">
+                    <Location>
+                        <X>160</X>
+                        <Y>420</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="proc-param" init-type="proc-param" label="" position-type="single" con-block-id="5152"/>
+                    </Plug>
+                </Block>
+                <Block id="5866" genus-name="onHitWall">
+                    <Location>
+                        <X>20</X>
+                        <Y>502</Y>
+                    </Location>
+                    <Sockets num-sockets="2">
+                        <BlockConnector connector-kind="socket" connector-type="proc-param" init-type="proc-param" label="event" position-type="single" con-block-id="5917"/>
+                        <BlockConnector connector-kind="socket" connector-type="cmd" init-type="cmd" label="" position-type="single" con-block-id="202"/>
+                    </Sockets>
+                </Block>
+                <Block id="202" genus-name="back">
+                    <Location>
+                        <X>129</X>
+                        <Y>531</Y>
+                    </Location>
+                    <BeforeBlockId>5866</BeforeBlockId>
+                    <Sockets num-sockets="1">
+                        <BlockConnector connector-kind="socket" connector-type="double" init-type="double" label="steps" position-type="single" con-block-id="204"/>
+                    </Sockets>
+                </Block>
+                <Block id="204" genus-name="double">
+                    <Label>20</Label>
+                    <Location>
+                        <X>219</X>
+                        <Y>534</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="double" init-type="double" label="" position-type="mirror" con-block-id="202"/>
+                    </Plug>
+                </Block>
+                <Block id="5917" genus-name="HitWallEvent">
+                    <Location>
+                        <X>132</X>
+                        <Y>499</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="proc-param" init-type="proc-param" label="" position-type="single" con-block-id="5866"/>
+                    </Plug>
+                </Block>
+                <Block id="195" genus-name="fire1">
+                    <Location>
+                        <X>173</X>
+                        <Y>367</Y>
+                    </Location>
+                    <BeforeBlockId>5356</BeforeBlockId>
+                    <Sockets num-sockets="1">
+                        <BlockConnector connector-kind="socket" connector-type="double" init-type="double" label="power" position-type="single" con-block-id="197"/>
+                    </Sockets>
+                </Block>
+                <Block id="197" genus-name="double">
+                    <Location>
+                        <X>253</X>
+                        <Y>370</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="double" init-type="double" label="" position-type="mirror" con-block-id="195"/>
+                    </Plug>
+                </Block>
+                <Block id="5356" genus-name="onScannedRobot">
+                    <Location>
+                        <X>20</X>
+                        <Y>338</Y>
+                    </Location>
+                    <Sockets num-sockets="2">
+                        <BlockConnector connector-kind="socket" connector-type="proc-param" init-type="proc-param" label="event" position-type="single" con-block-id="5407"/>
+                        <BlockConnector connector-kind="socket" connector-type="cmd" init-type="cmd" label="" position-type="single" con-block-id="195"/>
+                    </Sockets>
+                </Block>
+                <Block id="5407" genus-name="ScannedRobotEvent">
+                    <Location>
+                        <X>176</X>
+                        <Y>335</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="proc-param" init-type="proc-param" label="" position-type="single" con-block-id="5356"/>
+                    </Plug>
+                </Block>
+                <Block id="191" genus-name="true">
+                    <Location>
+                        <X>165</X>
+                        <Y>154</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="boolean" init-type="boolean" label="" position-type="mirror" con-block-id="173"/>
+                    </Plug>
+                </Block>
+                <Block id="173" genus-name="while">
+                    <Location>
+                        <X>59</X>
+                        <Y>151</Y>
+                    </Location>
+                    <BeforeBlockId>175</BeforeBlockId>
+                    <Sockets num-sockets="2">
+                        <BlockConnector connector-kind="socket" connector-type="boolean" init-type="boolean" label="condition" position-type="single" con-block-id="191"/>
+                        <BlockConnector connector-kind="socket" connector-type="cmd" init-type="cmd" label="do" position-type="single" con-block-id="213"/>
+                    </Sockets>
+                </Block>
+                <Block id="213" genus-name="ahead">
+                    <Location>
+                        <X>162</X>
+                        <Y>183</Y>
+                    </Location>
+                    <BeforeBlockId>173</BeforeBlockId>
+                    <AfterBlockId>217</AfterBlockId>
+                    <Sockets num-sockets="1">
+                        <BlockConnector connector-kind="socket" connector-type="double" init-type="double" label="steps" position-type="single" con-block-id="215"/>
+                    </Sockets>
+                </Block>
+                <Block id="217" genus-name="turnGunRight">
+                    <Location>
+                        <X>162</X>
+                        <Y>213</Y>
+                    </Location>
+                    <BeforeBlockId>213</BeforeBlockId>
+                    <AfterBlockId>221</AfterBlockId>
+                    <Sockets num-sockets="1">
+                        <BlockConnector connector-kind="socket" connector-type="double" init-type="double" label="degrees" position-type="single" con-block-id="219"/>
+                    </Sockets>
+                </Block>
+                <Block id="221" genus-name="back">
+                    <Location>
+                        <X>162</X>
+                        <Y>243</Y>
+                    </Location>
+                    <BeforeBlockId>217</BeforeBlockId>
+                    <AfterBlockId>225</AfterBlockId>
+                    <Sockets num-sockets="1">
+                        <BlockConnector connector-kind="socket" connector-type="double" init-type="double" label="steps" position-type="single" con-block-id="223"/>
+                    </Sockets>
+                </Block>
+                <Block id="225" genus-name="turnGunRight">
+                    <Location>
+                        <X>162</X>
+                        <Y>273</Y>
+                    </Location>
+                    <BeforeBlockId>221</BeforeBlockId>
+                    <Sockets num-sockets="1">
+                        <BlockConnector connector-kind="socket" connector-type="double" init-type="double" label="degrees" position-type="single" con-block-id="227"/>
+                    </Sockets>
+                </Block>
+                <Block id="227" genus-name="double">
+                    <Label>360</Label>
+                    <Location>
+                        <X>312</X>
+                        <Y>276</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="double" init-type="double" label="" position-type="mirror" con-block-id="225"/>
+                    </Plug>
+                </Block>
+                <Block id="223" genus-name="double">
+                    <Label>100</Label>
+                    <Location>
+                        <X>252</X>
+                        <Y>246</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="double" init-type="double" label="" position-type="mirror" con-block-id="221"/>
+                    </Plug>
+                </Block>
+                <Block id="219" genus-name="double">
+                    <Label>360</Label>
+                    <Location>
+                        <X>312</X>
+                        <Y>216</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="double" init-type="double" label="" position-type="mirror" con-block-id="217"/>
+                    </Plug>
+                </Block>
+                <Block id="215" genus-name="double">
+                    <Label>100</Label>
+                    <Location>
+                        <X>260</X>
+                        <Y>186</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="double" init-type="double" label="" position-type="mirror" con-block-id="213"/>
+                    </Plug>
+                </Block>
+                <Block id="189" genus-name="black">
+                    <Location>
+                        <X>211</X>
+                        <Y>124</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="double" init-type="double" label="" position-type="mirror" con-block-id="175"/>
+                    </Plug>
+                </Block>
+                <Block id="187" genus-name="orange">
+                    <Location>
+                        <X>211</X>
+                        <Y>28</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror" con-block-id="175"/>
+                    </Plug>
+                </Block>
+                <Block id="175" genus-name="setColors1">
+                    <Location>
+                        <X>59</X>
+                        <Y>25</Y>
+                    </Location>
+                    <BeforeBlockId>211</BeforeBlockId>
+                    <AfterBlockId>173</AfterBlockId>
+                    <Sockets num-sockets="5">
+                        <BlockConnector connector-kind="socket" connector-type="number" init-type="number" label="bodyColor" position-type="single" con-block-id="187"/>
+                        <BlockConnector connector-kind="socket" connector-type="number" init-type="number" label="gunColor" position-type="single" con-block-id="179"/>
+                        <BlockConnector connector-kind="socket" connector-type="number" init-type="number" label="radarColor" position-type="single" con-block-id="181"/>
+                        <BlockConnector connector-kind="socket" connector-type="number" init-type="number" label="bulletColor" position-type="single" con-block-id="183"/>
+                        <BlockConnector connector-kind="socket" connector-type="number" init-type="number" label="scanArcColor" position-type="single" con-block-id="189"/>
+                    </Sockets>
+                </Block>
+                <Block id="183" genus-name="yellow">
+                    <Location>
+                        <X>211</X>
+                        <Y>100</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror" con-block-id="175"/>
+                    </Plug>
+                </Block>
+                <Block id="181" genus-name="white">
+                    <Location>
+                        <X>211</X>
+                        <Y>76</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror" con-block-id="175"/>
+                    </Plug>
+                </Block>
+                <Block id="179" genus-name="blue">
+                    <Location>
+                        <X>211</X>
+                        <Y>52</Y>
+                    </Location>
+                    <Plug>
+                        <BlockConnector connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror" con-block-id="175"/>
+                    </Plug>
+                </Block>
+                <Block id="211" genus-name="run">
+                    <Location>
+                        <X>20</X>
+                        <Y>20</Y>
+                    </Location>
+                    <Sockets num-sockets="1">
+                        <BlockConnector connector-kind="socket" connector-type="cmd" init-type="cmd" label="" position-type="single" con-block-id="175"/>
+                    </Sockets>
+                </Block>
+            </PageBlocks> 
+        </Page>
+    </Pages>
+</CodeBlocks>

@@ -1,0 +1,446 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>RITA</groupId>
+  <artifactId>RITA</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>RITA</name>
+  
+  <!-- 
+  <url>http://maven.apache.org</url>
+
+    <organization>
+        <name>Sonatype</name>
+        <url>http://www.sonatype.com</url>
+    </organization>
+-->
+    <developers>
+        <developer>
+            <id>vaybar</id>
+            <name>Vanessa Aybar</name>
+            <email>vaybar@info.unlp.edu.ar</email>
+            <!-- <url>http://www.sonatype.com</url> -->
+            <organization>Fac. Informática - UNLP</organization>
+            <organizationUrl>http://www.info.unlp.edu.ar</organizationUrl>
+            <roles>
+                <role>developer</role>
+            </roles>
+            <timezone>-3</timezone>
+        </developer>
+    </developers>
+   
+  
+  
+  	<properties>
+		<jdk.version>1.6</jdk.version>
+		<staging.dir>${project.build.directory}/staging</staging.dir>
+    	<izpack-standalone.version>4.3.1</izpack-standalone.version>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	</properties>
+  
+
+  <dependencies>
+    <!-- Librerias que no se encuentran públicas en repositorio (system y ${basedir})-->
+    <!-- Formateo código Java -->  
+    <dependency>
+	    <groupId>beautyj_debug</groupId>
+	    <artifactId>beautyj_debug</artifactId>
+	    <version>1.0.0</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/beautyj/beautyj_debug.jar</systemPath>
+	</dependency>  
+    <dependency>
+	    <groupId>beautyj</groupId>
+	    <artifactId>beautyj</artifactId>
+	    <version>1.0.0</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/beautyj/beautyj.jar</systemPath>
+    </dependency>
+
+    
+    
+    <!-- Dependencias de repositorio -->
+    <!-- APIS que usa BEAUTYJ -->
+    <dependency>
+		<groupId>xerces</groupId>
+		<artifactId>xercesImpl</artifactId>
+		<!-- <version>2.4.0</version> -->
+		<version>2.9.1</version>
+	</dependency>
+	<dependency>
+		<groupId>xerces</groupId>
+		<artifactId>xmlParserAPIs</artifactId>
+		<version>2.6.2</version>
+	</dependency>
+	<dependency>
+	    <!-- Eclipse compiler -->
+		<groupId>org.eclipse.jdt.core.compiler</groupId>
+		<artifactId>ecj-3.8.1</artifactId>
+		<version>3.8.1</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/compiler/ecj-3.8.1.jar</systemPath>
+	</dependency>
+     <!-- LOOK & FEEL -->       
+    <dependency>
+		<groupId>com.github.insubstantial</groupId>
+		<artifactId>laf-plugin-7.2.1</artifactId>
+		<version>7.2.1</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/laf/laf-plugin-7.2.1.jar</systemPath>
+	</dependency>
+    <dependency>
+		<groupId>com.github.insubstantial</groupId>
+		<artifactId>laf-widget-7.2.1</artifactId>
+		<version>7.2.1</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/laf/laf-widget-7.2.1.jar</systemPath>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.github.insubstantial</groupId>
+		<artifactId>substance-7.2.1</artifactId>
+		<version>7.2.1</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/laf/substance-7.2.1.jar</systemPath>
+	</dependency>
+	<dependency>
+		<groupId>com.github.insubstantial</groupId>
+		<artifactId>trident-7.2.1</artifactId>
+		<version>7.2.1</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/laf/trident-7.2.1.jar</systemPath>
+	</dependency>
+	
+    <!-- visualizacion de código fuente Java -->        
+    <dependency>
+	    <groupId>jastyle</groupId>
+	    <artifactId>jastyle</artifactId>
+	    <version>1.0.0</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/rita_lib/jastyle.jar</systemPath>
+    </dependency>
+
+	<dependency>
+		<groupId>commons-io</groupId>
+		<artifactId>commons-io-2.0.1</artifactId>
+		<version>2.0.1</version>
+		<scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/rita_lib/commons-io-2.0.1.jar</systemPath>
+	</dependency>
+
+	<!-- OPENBLOCKS -->	
+    <dependency>
+	    <groupId>TableLayout</groupId>
+	    <artifactId>TableLayout</artifactId>
+	    <version>1.0.0</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/openblocks/TableLayout.jar</systemPath>
+    </dependency>
+                        
+<dependency>
+	<groupId>org.jfree</groupId>
+	<artifactId>jcommon</artifactId>
+	<version>1.0.17</version>
+</dependency>
+<dependency>
+	<groupId>org.jfree</groupId>
+	<artifactId>jfreechart</artifactId>
+	<version>1.0.15</version>
+</dependency>
+<dependency>
+	<groupId>de.sciss</groupId>
+	<artifactId>jsyntaxpane</artifactId>
+	<version>1.0.0</version>
+</dependency>
+
+
+	<!-- ROBOCODE -->
+	<dependency>
+		<groupId>codesize</groupId>
+		<artifactId>codesize-1.1</artifactId>
+		<version>1.1</version>
+	 	<scope>system</scope>
+		<systemPath>${basedir}/src/main/resources/lib/codesize-1.1.jar</systemPath>
+	</dependency>
+
+
+<dependency>
+	<groupId>picocontainer-2.8</groupId>
+	<artifactId>picocontainer-2.8</artifactId>
+	<version>2.8</version>
+ 	<scope>system</scope>
+	<systemPath>${basedir}/src/main/resources/lib/picocontainer-2.8.jar</systemPath>
+</dependency>
+               
+
+
+    <dependency>
+	    <groupId>robocode-battle</groupId>
+	    <artifactId>robocode.battle-1.7.3.6</artifactId>
+	    <version>1.7.3.6</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/robocode.battle-1.7.3.6.jar</systemPath>
+    </dependency>
+
+    <dependency>
+	    <groupId>robocode-core</groupId>
+	    <artifactId>robocode.core-1.7.3.6</artifactId>
+	    <version>1.7.3.6</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/robocode.core-1.7.3.6.jar</systemPath>
+    </dependency>
+    <dependency>
+	    <groupId>robocode-host</groupId>
+	    <artifactId>robocode.host-1.7.3.6</artifactId>
+	    <version>1.7.3.6</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/robocode.host-1.7.3.6.jar</systemPath>
+    </dependency>
+    <dependency>
+	    <groupId>robocode</groupId>
+	    <artifactId>robocode</artifactId>
+	    <version>1.7.3.6</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/robocode.jar</systemPath>
+    </dependency>
+        <dependency>
+	    <groupId>robocode-repository</groupId>
+	    <artifactId>robocode.repository-1.7.3.6</artifactId>
+	    <version>1.7.3.6</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/robocode.repository-1.7.3.6.jar</systemPath>
+    </dependency>
+    <dependency>
+	    <groupId>robocode-sound</groupId>
+	    <artifactId>robocode.sound-1.7.3.6</artifactId>
+	    <version>1.7.3.6</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/robocode.sound-1.7.3.6.jar</systemPath>
+    </dependency>
+    <dependency>
+	    <groupId>robocode-ui</groupId>
+	    <artifactId>robocode.ui-1.7.3.6</artifactId>
+	    <version>1.7.3.6</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/robocode.ui-1.7.3.6.jar</systemPath>
+    </dependency>
+    <dependency>
+	    <groupId>robocode-uieditor</groupId>
+	    <artifactId>robocode.ui.editor-1.7.3.6</artifactId>
+	    <version>1.7.3.6</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/robocode.ui.editor-1.7.3.6.jar</systemPath>
+    </dependency>
+    <dependency>
+	    <groupId>roborumble</groupId>
+	    <artifactId>roborumble</artifactId>
+	    <version>1.7.3.6</version>
+	    <scope>system</scope>
+	    <systemPath>${basedir}/src/main/resources/lib/roborumble.jar</systemPath>
+    </dependency>
+
+    <dependency>
+      <groupId>org.codehaus.izpack</groupId>
+      <artifactId>izpack-standalone-compiler</artifactId>
+      <version>${izpack-standalone.version}</version>
+      <optional>true</optional>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>1.5.6</version>
+    </dependency>
+	
+    <!-- 
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+     -->
+  </dependencies>
+  
+  
+  
+      <build>
+        <finalName>rita</finalName>
+	  	<resources>
+			 <resource>
+			   <directory>${basedir}/src/main/resources</directory>
+				<excludes>
+				    <exclude>izpack/**</exclude>
+				</excludes>
+				<filtering>false</filtering>
+			 </resource>
+			 
+		</resources>
+         
+         <plugins>
+         
+         <plugin>
+  <groupId>org.apache.maven.plugins</groupId>
+  <artifactId>maven-jar-plugin</artifactId>
+  <version>2.4</version>
+  
+  <configuration>
+		<outputDirectory>/${staging.dir}/dependency</outputDirectory>
+      	<archive>
+			<manifestFile>${basedir}/src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+	</archive>
+  </configuration>
+ </plugin>
+         
+         
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.1</version>
+        <configuration>
+          <source>${jdk.version}</source>
+          <target>${jdk.version}</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+            <wtpmanifest>true</wtpmanifest>
+            <wtpapplicationxml>true</wtpapplicationxml>
+            <wtpversion>2.0</wtpversion>
+        </configuration>
+    </plugin>
+     <!-- La descarga de los SRC se hará desde GitHub -->
+     <!-- 
+      
+	<plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>2.2.1</version>
+        <configuration>
+          <outputDirectory>/${staging.dir}/src</outputDirectory>
+          <finalName>rita</finalName>
+          <attach>false</attach>
+        </configuration>
+	   <executions>
+	    <execution>
+	      <id>attach-sources</id>
+	      <goals>
+	        <goal>jar</goal>
+	      </goals>
+	    </execution>
+	  </executions> 
+	</plugin>
+     -->
+     <plugin>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.1</version>
+          <executions>
+            <execution>
+              <id>create-staging-area</id>
+              <phase>process-resources</phase>
+              <goals>
+                <goal>run</goal>
+              </goals>
+              <configuration>
+                <tasks>
+                  <copy todir="${staging.dir}/images"> 
+                    <!-- <fileset dir="${basedir}/src/main/resources/images" /> -->
+                     <fileset dir="${basedir}/src/main/resources/images" /> 
+                  </copy>
+
+                  <copy todir="${staging.dir}/dependency">
+                      <fileset dir="${basedir}/src/main/resources/lib" includes="RITA-batalla.jar" />
+                  </copy>
+                  
+                  <copy todir="${staging.dir}/support">
+                      <fileset dir="${basedir}/src/main/resources/support" includes="advanced_code.xml" />
+                      <fileset dir="${basedir}/src/main/resources/support" includes="junior_code.xml" />
+                      <fileset dir="${basedir}/src/main/resources/support" includes="lang_def_advanced.xml" />
+                      <fileset dir="${basedir}/src/main/resources/support" includes="lang_def_junior.xml" />
+                      <fileset dir="${basedir}/src/main/resources/support" includes="rita.properties" />
+                      <fileset dir="${basedir}/src/main/resources/support" includes="lang_def.dtd" />
+                      <fileset dir="${basedir}/src/main/resources/support" includes="lang_def.xml" />
+                      <fileset dir="${basedir}/src/main/resources/support" includes="save_format.dtd" />
+                  </copy>
+                  
+                  <copy todir="${staging.dir}/robots">                  
+                      <fileset dir="${basedir}/robots" includes="**/*" />
+                  </copy>
+
+                  <copy todir="${staging.dir}/izpack">                  
+                      <fileset dir="${basedir}/src/main/resources/izpack" includes="**/*" />
+                  </copy>
+                  <copy todir="${staging.dir}/config">                  
+                      <fileset dir="${basedir}/config" includes="robocode.properties" />
+                  </copy>
+                  <copy todir="${basedir}" >                  
+                      <fileset dir="${basedir}/src/main/resources/izpack" includes="install.bat" />
+                  </copy>
+                  
+                  </tasks>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+        <!--  prepare dependencies so that izpack jar tag to pickup at compile time -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>2.0</version>
+          <executions>
+            <execution>
+              <id>standard-installer</id>
+              <phase>process-resources</phase>
+              <goals>
+                <goal>copy-dependencies</goal>
+              </goals>
+              <configuration>
+                <stripVersion>true</stripVersion>
+                <excludeGroupIds>org.codehaus.izpack</excludeGroupIds> <!-- dont want standalone compiler -->
+                <outputDirectory>${staging.dir}/dependency</outputDirectory>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+     
+    <!--  see install.xml to see how MyHelloPanel is used -->
+        <plugin>
+          <groupId>org.codehaus.izpack</groupId>
+          <artifactId>izpack-maven-plugin</artifactId>
+          <version>1.0-alpha-5</version>
+
+          <dependencies>
+            <dependency>
+              <groupId>org.codehaus.izpack</groupId>
+              <artifactId>izpack-standalone-compiler</artifactId>
+              <version>${izpack-standalone.version}</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <descriptor>${basedir}/src/main/resources/izpack/install.xml</descriptor>
+            <!-- <installerFile>${project.build.directory}/${project.build.finalName)-classifier.fileExtension</installerFile>-->
+            <baseDir>${staging.dir}</baseDir>
+            <izpackBasedir>${staging.dir}</izpackBasedir>
+            <customPanelDirectory>${staging.dir}</customPanelDirectory>
+
+            <mkdirs>true</mkdirs>
+			<installerFile>RitaSetup</installerFile>
+          </configuration>
+          <executions>
+            <execution>
+              <id>standard-installer</id>
+              <phase>package</phase>
+              <goals>
+                <goal>izpack</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+    </plugins>
+    </build>     
+    
+</project>

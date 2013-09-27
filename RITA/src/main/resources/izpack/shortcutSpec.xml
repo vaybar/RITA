@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<shortcuts>
+  <skipIfNotSupported />
+  <programGroup defaultName="RITA" location="applications"/>	  
+	  <shortcut
+		name="RITA"
+		target="$INSTALL_PATH/rita.bat"
+		iconFile="$INSTALL_PATH/rita.ico" 
+		workingDirectory="$INSTALL_PATH"
+		iconIndex="0"
+     		programGroup="yes"
+     		desktop="yes"
+     		applications="no"
+     		startMenu="no"
+     		startup="no">
+     		<createForPack name="Core"/>
+	  </shortcut> 
+	  <shortcut
+		name="Desinstalar RITA"
+		target="$INSTALL_PATH/Uninstaller/uninstall.bat" 
+		commandLine=""
+		workingDirectory="$INSTALL_PATH/Uninstaller"
+		description="Desinstalar RITA"
+		iconFile="$INSTALL_PATH/rita.ico" 
+		iconIndex="0"
+     		programGroup="yes"
+     		desktop="no"
+     		applications="no"
+     		startMenu="no"
+     		startup="no">
+     		<createForPack name="Core"/>
+	  </shortcut>  
+<!--	  <shortcut
+		name="Desinstalar RITA"
+		target="$INSTALL_PATH/Uninstaller/uninstaller.jar"
+		iconFile="$INSTALL_PATH/rita.ico" 
+		iconIndex="0"
+     		programGroup="yes"
+     		desktop="no"
+     		applications="no"
+     		startMenu="no"
+     		startup="no">
+     		<createForPack name="Core"/>
+	  </shortcut>     
+-->
+</shortcuts>

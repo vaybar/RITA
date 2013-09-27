@@ -1,0 +1,1 @@
+cmd.exe /C java -jar "%CD%\lib\rita.jar" "%CD%"

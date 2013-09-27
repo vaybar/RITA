@@ -1,0 +1,147 @@
+
+private static final class ConsolaRobot {
+      private static final String TITULO_CONSOLA = "El robot";
+	  private static final String DICE = " dice:";
+	  private static final String NEWLINE_STR = "\n";
+	  private static final char NEWLINE = '\n';
+	  
+	  private int numLinesInConsole = 0, maxLinesInConsole;
+	  private javax.swing.JFrame window;
+	  private javax.swing.JPanel myPanel=null;
+	  private javax.swing.JTextArea textArea=null;
+	  private StringBuffer myBuffer=new StringBuffer();
+	
+	  public ConsolaRobot(String nombreRobot) {
+		  this(100,nombreRobot,null,null);
+	  }
+		  
+
+	  public ConsolaRobot(String nombreRobot,String fgColor, String bgColor) {
+		  this(100,nombreRobot,fgColor,bgColor);
+	  }
+
+	  private java.awt.Color getColorByName(String colorName) {
+		try {
+		    java.lang.reflect.Field field = java.awt.Color.class.getField(colorName);
+		    return (java.awt.Color)field.get(null);
+		} catch (Exception e) {
+		    return null; // Not defined
+		}
+	  }
+
+
+	  /* metodo que crea una ventana con la consola dentro */
+	  public ConsolaRobot(int maxLinesToKeep, String nombreRobot, String fgColor, String bgColor) {
+	      // panel que contiene al texto
+	      textArea = new javax.swing.JTextArea(); 
+	      textArea.setEditable(false);    // read-only
+	      textArea.setFont(new java.awt.Font("monospaced", java.awt.Font.PLAIN, 12) );
+	      textArea.setOpaque(true);
+	      java.awt.Color color;
+	      if(fgColor!=null) {
+	        color = getColorByName(fgColor);
+	        if(color!=null) {
+	          textArea.setForeground(color);
+	        }
+	      }
+	      if(bgColor!=null) {
+	        color = getColorByName(bgColor);
+	        if(color!=null) {
+	          textArea.setBackground(color);
+	        }
+	      }
+	      // envolver el text area con un panel con scroll bar
+	      javax.swing.JScrollPane scrollingPanel=new javax.swing.JScrollPane(textArea);
+	      scrollingPanel.setPreferredSize(new java.awt.Dimension(400,200));
+	 
+	      // crear un panel que contenga al scrolling panel
+	      myPanel = new javax.swing.JPanel();      
+	      myPanel.add(scrollingPanel);  
+	      myPanel.setPreferredSize(new java.awt.Dimension(400,200));
+	      maxLinesInConsole = maxLinesToKeep;
+
+		  window=new javax.swing.JFrame();
+		  if(nombreRobot!=null && nombreRobot.length()>0) {
+		    	window.setTitle(ConsolaRobot.TITULO_CONSOLA+" "+nombreRobot+DICE);	    	
+		  } else {
+		    	window.setTitle(ConsolaRobot.TITULO_CONSOLA+DICE);
+		  }
+		  window.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+		  window.add(this.getPanel());
+		  window.pack();
+		  window.setVisible(true);
+	  }
+	 
+	  public void println() {
+		  addText(null);
+	  }
+	  
+	  public void println(String text) {
+		  addText(text);
+		  textArea.setText(myBuffer.toString());  // escribir el buffer de la consola en JTextArea
+	      textArea.setCaretPosition(textArea.getDocument().getLength()); // auto scroll
+	  }
+	  
+	  private int addText(String text) {	  
+		  int numLinesInText = 1, eol;
+		  if(text!=null) {
+			  eol = text.indexOf(NEWLINE);
+			  while(eol!=-1) {
+				  ++numLinesInText;
+				  eol = text.indexOf(NEWLINE,eol+1);
+			  }
+		  }
+		  if(numLinesInText>maxLinesInConsole) {
+			// estamos queriendo escribir de 1 vez mas lineas de las que entran en la consola => cercenar las 1ras lineas del nuevo texto hasta que entre en la consola
+			  numLinesInText -= maxLinesInConsole;
+			  eol = text.indexOf(NEWLINE);
+			  while(eol!=-1 && numLinesInText>0) {
+				  --numLinesInText;
+				  eol = text.indexOf(NEWLINE,eol+1);
+			  }
+			  myBuffer.setLength(0);
+			  myBuffer.append(text.subSequence(eol+1, text.length()));
+			  numLinesInConsole = maxLinesInConsole;
+		  } else if(numLinesInConsole+numLinesInText>maxLinesInConsole) {
+			  // el texto nuevo + el existente supera el limite de lineas de la consola => cercenar las 1ras lineas de la consola  hasta que entre el texto nuevo
+			  eol = myBuffer.indexOf(NEWLINE_STR);
+			  if(eol!=-1) {
+				  --numLinesInConsole;			  
+				  while(eol!=-1 && numLinesInConsole+numLinesInText>maxLinesInConsole) {
+					  --numLinesInConsole;
+					  eol = myBuffer.indexOf(NEWLINE_STR,eol+1);
+				  }
+			  }
+			  if(eol!=-1) {
+				  myBuffer.delete(0, eol+1);
+				  if(text!=null) {
+					  myBuffer.append(text);
+				  }
+			  }
+			  numLinesInConsole = maxLinesInConsole;
+		  } else {
+			  // el texto nuevo entra sin problemas en la consola, hay lugar
+			  if(text!=null) {
+				  myBuffer.append(text);
+			  }
+			  numLinesInConsole += numLinesInText;
+		  }
+		  myBuffer.append(NEWLINE);
+		  return numLinesInConsole;
+	  }
+	 
+	 
+	  // retorna el panel que contiene a la salida
+	  protected javax.swing.JPanel getPanel() {
+	    return myPanel;
+	  }
+	 
+	  public void close() {
+		  if(window!=null && window.isDisplayable()) {
+			  window.dispose();
+		  }
+	  }
+	
+}
+
+private ConsolaRobot _consola = null;

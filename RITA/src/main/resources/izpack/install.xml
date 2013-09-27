@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<installation version="1.0">
+
+	<info>
+		<appname>RITA</appname>
+		<appversion>1.5</appversion>
+		<appsubpath>rita</appsubpath>
+		<javaversion>1.6</javaversion>
+		<authors>
+			<author name="Vanessa Aybar Rosales (desarrollador original)" email="vaybar@info.unlp.edu.ar" />
+			<author name="Matias Brown (contribucion)" email="matibrown@gmail.com" />
+			<author name="Raul Benencia (contribucion)" email="rbenencia@linti.unlp.edu.ar" />
+			<author name="Nicolas Perera (contribucion)" email=""/>
+			<author name="Juan Pablo Tarragona (contribucion)" email=""/> 
+		</authors>
+		<run-privileged condition="izpack.windowsinstall.vista|izpack.windowsinstall.7"/>
+	</info>
+
+	<locale>
+		<langpack iso3="spa" />
+	</locale>
+	<!-- Recursos de nuestra instalación -->
+	<resources>
+		<!-- Contenido que se mostrará en el panel InfoPanel (Ver imagen 3) -->
+		<res id="InfoPanel.info" src="izpack/Readme.txt" />
+
+		<!--
+			Los accesos directos están definidos en el fichero
+			res_izpack/shortcutSpec.xml
+		-->
+		<res id="shortcutSpec.xml" src="izpack/shortcutSpec.xml" />
+		<!-- imagen mostrada a la izquierda -->
+		<res id="Installer.image" src="images/rita_con_titulo.jpg" />
+		    <!-- Set the default installation directory shown in the TargetPanel -->
+    	<res id="TargetPanel.dir.windows" src="izpack/TargetDirWindows.txt" />
+    	<res id="TargetPanel.dir.unix" src="izpack/TargetDirUnix.txt" />
+	</resources>
+
+	<!-- Requerido para crear los accesos directos en sistemas Windows -->
+	<!--<native type="izpack" name="ShellLink.dll"/>-->
+	<natives>
+		<native type="izpack" name="ShellLink.dll" />
+		<native type="izpack" name="ShellLink_x64.dll" />
+	</natives>
+	<guiprefs width="800" height="600" resizable="no">
+		<splash>images/rita_con_titulo.jpg</splash>
+		<!--
+			<laf name="substance"> <os family="windows" /> <os family="unix" />
+			<param name="variant" value="mist-silver" /> </laf> <laf
+			name="substance"> <os family="mac" /> <param name="variant"
+			value="mist-aqua" /> </laf>
+		-->
+		<modifier key="useHeadingPanel" value="yes" />
+	</guiprefs>
+
+	<panels>
+
+		<!--
+			Muestra un saludo genérico al usuario que ejecuta la instalación (Ver
+			imagen 2)
+		-->
+		<panel classname="HelloPanel" />
+
+		<!--
+			Muestra los datos informativos definidos en el elemento info que
+			escribimos arriba (Ver imagen 2)
+		-->
+		<panel classname="InfoPanel" />
+
+		<!--
+			Pregunta al usuario en que directorio se instalarán los archivos de
+			la aplicación (Ver imagen 4)
+		-->
+		<panel classname="TargetPanel" />
+
+		<!-- Pregunta al usuario que paquetes desea instalar  (Ver imagen 5) -->
+		<panel classname="PacksPanel" />
+
+		<!-- Este es un panel de control que siempre debe estar especificado -->
+		<panel classname="InstallPanel" />
+
+		<!--
+			Pregunta al usuario que accesos directos desea crear (Ver imagen 7)
+		-->
+		<panel classname="ShortcutPanel" />
+
+		<!--
+			Muestra un mensaje informativo indicando que la instalación a
+			finalizado (Ver imagen 8)
+		-->
+		<!--<panel classname="SimpleFinishPanel"/>-->
+		<panel classname="FinishPanel" />
+	</panels>
+
+	<packs>
+		<pack name="Core" required="yes" preselected="yes">
+			<description>Ambiente de ejecución</description>
+			<!--
+				Librerias necesarias para RITA o la ejecucion del RobocodeEngine
+			-->
+ 			<file src="dependency/rita.jar" targetdir="$INSTALL_PATH/lib" /> 
+			<file src="dependency/robocode.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/robocode.core-1.7.3.6.jar" targetdir="$INSTALL_PATH/lib" />
+ 			<file src="dependency/picocontainer-2.8.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/robocode.host-1.7.3.6.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/robocode.battle-1.7.3.6.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/robocode.repository-1.7.3.6.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/codesize-1.1.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/robocode.sound-1.7.3.6.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/robocode.ui-1.7.3.6.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/roborumble.jar" targetdir="$INSTALL_PATH/lib" />
+			
+			<!-- Archivos del ambiente eclipse-->
+			<file src="dependency/ecj-3.8.1.jar" targetdir="$INSTALL_PATH/lib" />
+
+			<!-- Archivos de L&F-->
+			<file src="dependency/laf-plugin-7.2.1.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/laf-widget-7.2.1.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/substance-7.2.1.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/trident-7.2.1.jar" targetdir="$INSTALL_PATH/lib" />
+			
+			<file src="dependency/TableLayout.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/jastyle.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/commons-io-2.0.1.jar" targetdir="$INSTALL_PATH/lib" />
+
+
+			<file src="/support/lang_def.dtd" targetdir="$INSTALL_PATH/support" />
+			<file src="/support/save_format.dtd" targetdir="$INSTALL_PATH/support" />
+			<file src="/support/lang_def.xml" targetdir="$INSTALL_PATH/support" />
+			<file src="/support/lang_def_junior.xml" targetdir="$INSTALL_PATH/support" />
+			<file src="/support/lang_def_advanced.xml" targetdir="$INSTALL_PATH/support" />
+			<file src="/support/junior_code.xml" targetdir="$INSTALL_PATH/support" />
+			<file src="/support/advanced_code.xml" targetdir="$INSTALL_PATH/support" />
+			<file src="/support/rita.properties" targetdir="$INSTALL_PATH/support" />			
+			<!--
+				<file src="jars/robocode.jar" targetdir="$INSTALL_PATH/lib"/>
+			-->
+
+
+
+			<!-- <file src="izpack/install.bat" targetdir="$INSTALL_PATH" /> -->
+			<file src="izpack/rita.bat" targetdir="$INSTALL_PATH" />
+			<file src="izpack/uninstall.bat" targetdir="$INSTALL_PATH/Uninstaller" />
+			<file src="izpack/rita.ico" targetdir="$INSTALL_PATH" />
+
+			<!-- Robots de nivel 1 -->
+			<file src="robots/sample/RamFire.class" targetdir="$INSTALL_PATH/robots/sample" />
+			<file src="robots/sample/RamFire.java" targetdir="$INSTALL_PATH/robots/sample" />
+			<file src="robots/sample/Tracker.class" targetdir="$INSTALL_PATH/robots/sample" />
+			<file src="robots/sample/Tracker.java" targetdir="$INSTALL_PATH/robots/sample" />
+
+			<!-- Robots de nivel 2 -->
+			<file src="robots/sample/SpinBot.class" targetdir="$INSTALL_PATH/robots/sample" />
+			<file src="robots/sample/SpinBot.java" targetdir="$INSTALL_PATH/robots/sample" />
+
+			<!-- Robots de nivel 3 -->
+			<file src="robots/sample/VelociRobot.class" targetdir="$INSTALL_PATH/robots/sample" />
+			<file src="robots/sample/VelociRobot.java" targetdir="$INSTALL_PATH/robots/sample" />
+
+			<!-- Robots extra -->
+			<file src="robots/sample/Mambo.class" targetdir="$INSTALL_PATH/robots/sample" />
+			<file src="robots/sample/Mambo.java" targetdir="$INSTALL_PATH/robots/sample" />
+			
+			<file src="robots/misrobots" targetdir="$INSTALL_PATH/robots/" />
+			<file src="izpack/set_classpath.sh" targetdir="$INSTALL_PATH" />
+			<file src="izpack/set_classpath.bat" targetdir="$INSTALL_PATH" />
+			
+			<file src="config/robocode.properties" targetdir="$INSTALL_PATH/config" />
+			<parsable targetfile="$INSTALL_PATH/set_classpath.sh" />
+			<parsable targetfile="$INSTALL_PATH/set_classpath.bat" />
+
+			<executable type="bin" stage="postinstall"
+				targetfile="$INSTALL_PATH/set_classpath.sh" os="unix" />
+			<executable type="bin" stage="postinstall"
+				targetfile="$INSTALL_PATH/set_classpath.bat" os="windows" />
+
+
+		</pack>
+
+		<!-- Este paquete (JAR) contiene el código fuente de la aplicación  -->
+		<!-- La descarga de los SRC se hará desde GitHub -->
+		<!-- 
+		<pack name="Fuentes" required="no">
+			<description>Código fuente de la aplicacion</description>
+ 			<file src="src/rita-sources.jar" targetdir="$INSTALL_PATH/src" /> 
+		</pack>
+ 		-->
+	</packs>
+
+</installation>
