@@ -1,11 +1,11 @@
+***
+Para descargar el instalador del juego presione arriba en el 
+botón RELEASE (disponible la versión RITA 1.5). No presione Download ZIP.
+***
+
 RITA - Robot Inventor to Teach Algorithms
 
 Bienvenido a RITA (Robot Inventor to Teach Algorithms)!
-
-***
-Para descargar el instalador del juego presione en el 
-botón RELEASE (disponible la versión RITA 1.5)
-***
 
 RITA lo ayudara a construir la estrategia de un robot. 
 Podra evaluar el exito de su estrategia poniendo a prueba 
