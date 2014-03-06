@@ -121,18 +121,20 @@ public class ContextMenu extends PopupMenu implements ActionListener {
 	 * 
 	 */
 	private static void initCanvasMenu() {
-		arrangeAllBlocks = new MenuItem(Language.get("arrangeBlocks")); // TODO
-																		// some
-																		// workspaces
-																		// don't
-																		// have
-																		// pages
-		arrangeAllBlocks.setActionCommand(ARRANGE_ALL_BLOCKS);
-		arrangeAllBlocks.addActionListener(canvasMenu);
-
-		canvasMenu.add(arrangeAllBlocks);
-
-		canvasMenuInit = true;
+		if (arrangeAllBlocks==null){
+			arrangeAllBlocks = new MenuItem(Language.get("arrangeBlocks")); // TODO
+																			// some
+																			// workspaces
+																			// don't
+																			// have
+																			// pages
+			arrangeAllBlocks.setActionCommand(ARRANGE_ALL_BLOCKS);
+			arrangeAllBlocks.addActionListener(canvasMenu);
+	
+			canvasMenu.add(arrangeAllBlocks);
+	
+			canvasMenuInit = true;
+		}
 	}
 
 	/**
