@@ -215,7 +215,7 @@
                         <Y>124</Y>
                     </Location>
                     <Plug>
-                        <BlockConnector connector-kind="plug" connector-type="double" init-type="double" label="" position-type="mirror" con-block-id="175"/>
+                        <BlockConnector connector-kind="plug" connector-type="number" init-type="number" label="" position-type="mirror" con-block-id="175"/>
                     </Plug>
                 </Block>
                 <Block id="187" genus-name="orange">
