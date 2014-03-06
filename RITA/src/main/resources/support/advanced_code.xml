@@ -8,25 +8,25 @@
                         <X>157</X>
                         <Y>452</Y>
                     </Location>
-                    <BeforeBlockId>5152</BeforeBlockId>
+                    <BeforeBlockId>9995152</BeforeBlockId>
                 </Block>
-                <Block id="5152" genus-name="onBattleEnded">
+                <Block id="9995152" genus-name="onBattleEnded">
                     <Location>
                         <X>20</X>
                         <Y>423</Y>
                     </Location>
                     <Sockets num-sockets="2">
-                        <BlockConnector connector-kind="socket" connector-type="proc-param" init-type="proc-param" label="event" position-type="single" con-block-id="5203"/>
+                        <BlockConnector connector-kind="socket" connector-type="proc-param" init-type="proc-param" label="event" position-type="single" con-block-id="9995203"/>
                         <BlockConnector connector-kind="socket" connector-type="cmd" init-type="cmd" label="" position-type="single" con-block-id="6070"/>
                     </Sockets>
                 </Block>
-                <Block id="5203" genus-name="BattleEndedEvent">
+                <Block id="9995203" genus-name="BattleEndedEvent">
                     <Location>
                         <X>160</X>
                         <Y>420</Y>
                     </Location>
                     <Plug>
-                        <BlockConnector connector-kind="plug" connector-type="proc-param" init-type="proc-param" label="" position-type="single" con-block-id="5152"/>
+                        <BlockConnector connector-kind="plug" connector-type="proc-param" init-type="proc-param" label="" position-type="single" con-block-id="9995152"/>
                     </Plug>
                 </Block>
                 <Block id="5866" genus-name="onHitWall">
@@ -73,7 +73,7 @@
                         <X>173</X>
                         <Y>367</Y>
                     </Location>
-                    <BeforeBlockId>5356</BeforeBlockId>
+                    <BeforeBlockId>9995356</BeforeBlockId>
                     <Sockets num-sockets="1">
                         <BlockConnector connector-kind="socket" connector-type="double" init-type="double" label="power" position-type="single" con-block-id="197"/>
                     </Sockets>
@@ -87,23 +87,23 @@
                         <BlockConnector connector-kind="plug" connector-type="double" init-type="double" label="" position-type="mirror" con-block-id="195"/>
                     </Plug>
                 </Block>
-                <Block id="5356" genus-name="onScannedRobot">
+                <Block id="9995356" genus-name="onScannedRobot">
                     <Location>
                         <X>20</X>
                         <Y>338</Y>
                     </Location>
                     <Sockets num-sockets="2">
-                        <BlockConnector connector-kind="socket" connector-type="proc-param" init-type="proc-param" label="event" position-type="single" con-block-id="5407"/>
+                        <BlockConnector connector-kind="socket" connector-type="proc-param" init-type="proc-param" label="event" position-type="single" con-block-id="9995407"/>
                         <BlockConnector connector-kind="socket" connector-type="cmd" init-type="cmd" label="" position-type="single" con-block-id="195"/>
                     </Sockets>
                 </Block>
-                <Block id="5407" genus-name="ScannedRobotEvent">
+                <Block id="9995407" genus-name="ScannedRobotEvent">
                     <Location>
                         <X>176</X>
                         <Y>335</Y>
                     </Location>
                     <Plug>
-                        <BlockConnector connector-kind="plug" connector-type="proc-param" init-type="proc-param" label="" position-type="single" con-block-id="5356"/>
+                        <BlockConnector connector-kind="plug" connector-type="proc-param" init-type="proc-param" label="" position-type="single" con-block-id="9995356"/>
                     </Plug>
                 </Block>
                 <Block id="191" genus-name="true">
