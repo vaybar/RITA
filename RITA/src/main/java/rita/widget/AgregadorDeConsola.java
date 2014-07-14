@@ -29,7 +29,7 @@ import java.util.regex.Pattern;
  * y modifica el codigo fuente para que toda la salida por <code>println()</code> aparezca en una ventana aparte (consola).<br>
  * La consola se implementa como una clase interna del robot, autocontenida, sin dependencias de otros jars, que debe llamarse <code>ConsolaRobot</code>.<br>
  * El color del texto de la ventana coincidira con el color del cuerpo del robot, a menos que el robot no tenga
- * un color determinado, en cuyo caso el texto será negro.<br>
+ * un color determinado, en cuyo caso el texto serï¿½ negro.<br>
  * Si el robot no contiene <code>println()</code>, entonces el codigo fuente no es modificado.<br>
  * <b>IMPORTANTE:</b>Esta clase asume que el codigo fuente de la clase interna <code>ConsolaRobot</code> que implementa a la consola esta guardado
  *  en un archivo llamado <tt>"clase-consola-robot.txt"</tt> accesible directamente desde el classpath.<br>
@@ -197,9 +197,9 @@ public class AgregadorDeConsola {
 						int idxLlaveDeFinRun = buscarFinMetodo(textoClaseRobotConConsola,idxLlaveDeComienzoRun);
 						if(idxLlaveDeFinRun!=-1) {
 							// insertar el cierre de la consola antes de terminar
-							textoClaseRobotConConsola.insert(idxLlaveDeFinRun, "\n}finally{_consola.close();}\n");
+//							textoClaseRobotConConsola.insert(idxLlaveDeFinRun, "\n}finally{_consola.close();}\n");
 							// insertar la llamada que crea la ventana de la consola luego de la llave de comienzo del metodo "run"
-							textoClaseRobotConConsola.insert(comienzoBodyRun, "\n try {\n  _consola = new ConsolaRobot(100,this.getClass().getSimpleName(),\""+fgColor+"\",\""+bgColor+"\");\n");
+							textoClaseRobotConConsola.insert(comienzoBodyRun, "\n  _consola = ConsolaRobot.abrirConsola(100,this.getClass().getSimpleName(),\""+fgColor+"\",\""+bgColor+"\");\n");
 							// reemplazar todos los println() por escritura en la ventana de consola
 							findAndReplace(textoClaseRobotConConsola,idxLlaveDeComienzoClaseRobot, PRINTLN, "_consola.println");
 							return textoClaseRobotConConsola.toString();

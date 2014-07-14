@@ -1,5 +1,8 @@
-
+/* Esta clase implementa la ventana que muestra los println() de un robot. 
+   Esta clase deberia ser una inner class de la clase de cada robot, o sea:
+   Deberia haber una clase ConsolaRobot adentro de cada clase de robot que hace println(). */
 private static final class ConsolaRobot {
+
       private static final String TITULO_CONSOLA = "El robot";
 	  private static final String DICE = " dice:";
 	  private static final String NEWLINE_STR = "\n";
@@ -10,6 +13,8 @@ private static final class ConsolaRobot {
 	  private javax.swing.JPanel myPanel=null;
 	  private javax.swing.JTextArea textArea=null;
 	  private StringBuffer myBuffer=new StringBuffer();
+
+	  private static ConsolaRobot consolaPorClaseRobot = null;
 	
 	  public ConsolaRobot(String nombreRobot) {
 		  this(100,nombreRobot,null,null);
@@ -78,10 +83,41 @@ private static final class ConsolaRobot {
 	  
 	  public void println(String text) {
 		  addText(text);
+		  updateTextArea();
+	  }
+
+	  public void println(Object any) {
+		  addText(any.toString());
+		  updateTextArea();
+	  }
+
+	  public void println(char c) {
+		  addText(java.lang.Character.toString(c));
+		  updateTextArea();
+	  }
+
+	  public void println(double num) {
+		  addText(java.lang.Double.toString(num));
+		  updateTextArea();
+	  }
+
+	  public void println(boolean b) {
+		  addText(java.lang.Boolean.toString(b));
+		  updateTextArea();
+	  }
+
+	  private void updateTextArea() {
 		  textArea.setText(myBuffer.toString());  // escribir el buffer de la consola en JTextArea
 	      textArea.setCaretPosition(textArea.getDocument().getLength()); // auto scroll
 	  }
-	  
+
+  
+	  public void println(float num) {
+		  addText(java.lang.Float.toString(num));
+		  textArea.setText(myBuffer.toString());  // escribir el buffer de la consola en JTextArea
+	      textArea.setCaretPosition(textArea.getDocument().getLength()); // auto scroll
+	  }
+
 	  private int addText(String text) {	  
 		  int numLinesInText = 1, eol;
 		  if(text!=null) {
@@ -138,10 +174,26 @@ private static final class ConsolaRobot {
 	 
 	  public void close() {
 		  if(window!=null && window.isDisplayable()) {
-			  window.dispose();
+		  	  window.dispose();
 		  }
 	  }
 	
-}
+	  public static synchronized ConsolaRobot abrirConsola(int maxLinesToKeep, String nombreRobot, String fgColor, String bgColor) {
+	  		if(consolaPorClaseRobot==null) {
+	  			consolaPorClaseRobot = new ConsolaRobot(maxLinesToKeep, nombreRobot, fgColor, bgColor);
+	  		}
+	  		return consolaPorClaseRobot;
+	  }
+
+	  public static synchronized ConsolaRobot abrirConsola(String nombreRobot) {
+	  		if(consolaPorClaseRobot==null) {
+	  			consolaPorClaseRobot = new ConsolaRobot(nombreRobot);
+	  		}
+	  		return consolaPorClaseRobot;
+	  }
+	  
+};
+
+
 
 private ConsolaRobot _consola = null;

@@ -15,6 +15,7 @@ import java.io.OutputStream;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.util.Enumeration;
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -990,7 +991,7 @@ public class WorkspaceController {
 				// save the project
 				OutputStream bos = new FileOutputStream(dir + File.separator
 						+ filename);
-				bos.write(currentContentToSave.getBytes());
+				bos.write(currentContentToSave.getBytes(Charset.forName("UTF-8")));
 				bos.close();
 
 				// save the source code
