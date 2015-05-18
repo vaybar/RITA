@@ -783,10 +783,15 @@ public class BlockShape {
 		//connect so gpCounterClockwise is the full path
 		//it must be counter-clockwise for the bevel to be able to use it
 		BlockShapeUtil.appendPath(gpCounterClockwise, gpClockwise, true);
-		
+		//BlockShapeUtil.printPath(gpCounterClockwise);
 		//convert it to an area
 		//System.out.println(gpCounterClockwise.toString());
-		blockArea = new Area(gpCounterClockwise); 
+		try {
+			blockArea = new Area(gpCounterClockwise);
+		} catch(Throwable e){
+			gpCounterClockwise.append(gpRight, true);
+			blockArea = new Area(gpCounterClockwise);
+		}
 	
 		return blockArea;
     }

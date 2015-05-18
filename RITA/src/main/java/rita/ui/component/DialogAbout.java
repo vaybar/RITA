@@ -15,41 +15,40 @@
 package rita.ui.component;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Desktop;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.net.URI;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-
-import java.awt.Desktop;
-import java.awt.Dimension;
-import java.awt.Font;
-
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 
 import rita.settings.Language;
 
-import java.awt.SystemColor;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.net.URI;
-
-import javax.swing.event.HyperlinkListener;
-
 /**
- * Esta clase representa a la ventana de información acerca de la aplicación.
+ * Esta clase representa a la ventana de informaciï¿½n acerca de la aplicaciï¿½n.
  * 
  * @author Vanessa Aybar Rosales
  * */
 public class DialogAbout extends JDialog {
 
 	private static final long serialVersionUID = 838041902922227173L;
-
+	JLabel lblIconRita = new JLabel("");
 	/**
 	 * Create the application.
 	 */
@@ -58,6 +57,23 @@ public class DialogAbout extends JDialog {
 		initialize();
 	}
 
+	
+	private class MouseListenerRitaImg extends MouseAdapter{
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			lblIconRita.setIcon(new ImageIcon(DialogAbout.class.getResource("/images/rita_con_titulo_real.jpg")));
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			lblIconRita.setIcon(new ImageIcon(DialogAbout.class.getResource("/images/rita_con_titulo.jpg")));
+		}
+		
+		
+	}
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -67,9 +83,10 @@ public class DialogAbout extends JDialog {
 		this.setSize(597, 375);
 		this.getContentPane().setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblIconRita = new JLabel("");
+
 		lblIconRita.setBorder(new EmptyBorder(12, 12, 12, 12));
 		lblIconRita.setIcon(new ImageIcon(DialogAbout.class.getResource("/images/rita_con_titulo.jpg")));
+		lblIconRita.addMouseListener(new MouseListenerRitaImg());
 		this.getContentPane().add(lblIconRita, BorderLayout.WEST);
 		
 		JPanel panel = new JPanel();

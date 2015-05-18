@@ -34,10 +34,10 @@ public class RulesUtilities {
 	 * ensure that the blocks maintains theirs type consistency. 
 	 */
 	public static void checkConnectedSocketConsistency(Block block) {	
-		if (block.getPlug().hasBlock()) {
+		if (block.getPlug()!=null && block.getPlug().hasBlock()) {
 			BlockConnector socket = findSocketForPlug(Block.getBlock(block.getPlug().getBlockID()), block);
 
-			if (!block.getPlugKind().equals(socket.getKind())) {
+			if (socket!=null && !block.getPlugKind().equals(socket.getKind())) {
 				Block newBlock = Block.getBlock(block.getPlug().getBlockID());
 				if (socket.initKind().equals("poly")) {										
 					// Be wary, recursive code coming					
