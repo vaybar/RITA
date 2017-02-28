@@ -9,10 +9,10 @@ su robot en el campo de batalla provisto por ROBOCODE
 Disfrutelo!
 
 
-Version 1.5
-Ultima Revision: septiembre del 2013
+Version 1.6
+Ultima Revision: febrero del 2017
 
 
 Este programa esta construido en Java, de modo que puede 
-ejecutarse en cualquier sistema operativo que posea la JVM 1.5+. Ademas, puede instalar el codigo fuente, dado que su distribucion es Open Source.
+ejecutarse en cualquier sistema operativo que posea la JVM 1.6+ (JDK). Ademas, puede instalar el codigo fuente, dado que su distribucion es Open Source.
 

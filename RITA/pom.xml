@@ -370,17 +370,22 @@
                   <copy todir="${staging.dir}/robots">                  
                       <fileset dir="${basedir}/robots" includes="**/*" />
                   </copy>
-
-                  <copy todir="${staging.dir}/izpack">                  
+				  <copy todir="${staging.dir}/izpack">                  
                       <fileset dir="${basedir}/src/main/resources/izpack" includes="**/*" />
                   </copy>
+                  <chmod file="${staging.dir}/izpack/rita.sh" perm="ugo+rwx"/>
+                  
                   <copy todir="${staging.dir}/config">                  
                       <fileset dir="${basedir}/config" includes="robocode.properties" />
                   </copy>
                   <copy todir="${basedir}" >                  
                       <fileset dir="${basedir}/src/main/resources/izpack" includes="install.bat" />
                   </copy>
-                  
+                  <copy todir="${basedir}" >                  
+                      <fileset dir="${basedir}/src/main/resources/izpack" includes="install-rita.sh" />
+                  </copy>
+                  <chmod file="${basedir}/install-rita.sh" perm="ugo+rx"/>
+                                    
                   </tasks>
               </configuration>
             </execution>
