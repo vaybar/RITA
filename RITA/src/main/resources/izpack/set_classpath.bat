@@ -1,1 +1,0 @@
-SET CLASSPATH=%CLASSPATH%;%CD%;%CD%\lib\rita.jar;%CD%\lib\robocode.jar
