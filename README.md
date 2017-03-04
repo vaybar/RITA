@@ -1,6 +1,5 @@
 ***
-Para descargar el instalador del juego presione arriba en el 
-botón RELEASE (disponible la versión RITA 1.5). No presione Download ZIP.
+Para descargar el instalador del juego acceda a http://linti.unlp.edu.ar/software/Rita . Puede instalarlo en un sistema operativo Windows o Linux con Java instalado (JDK 1.6+). Para instalar descomprima el archivo descargado y ejecute install.bat en Windows o install-rita.sh en linux y se realizará el proceso de instalación.  
 ***
 
 RITA - Robot Inventor to Teach Algorithms
@@ -32,6 +31,6 @@ El proyecto está construida usando e integrando las librerías:
 -Eclipse - compilador (http://www.eclipse.org/jdt/core/)
 
 Las carpetas config y robots quedan fuera de la estructura de MVN dado que Robocode va a buscarlos en esa ubicación relativa al proyecto.
-El POM.xml genera los archivos instaladores: install.bat y RitaSetup.jar en el directorio root del proyecto.
+El POM.xml genera los archivos instaladores: install.bat, install-rita.sh y RitaSetup.jar en el directorio root del proyecto.
 La descarga de los fuentes puede realizarla desde:
  https://github.com/vaybar/RITA 
