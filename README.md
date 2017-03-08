@@ -1,5 +1,5 @@
 ***
-Para descargar el instalador del juego acceda a http://linti.unlp.edu.ar/software/Rita . Puede instalarlo en un sistema operativo Windows o Linux con Java instalado (JDK 1.6+). Para instalar descomprima el archivo descargado y ejecute install.bat en Windows o install-rita.sh en linux y se realizará el proceso de instalación.  
+Para descargar el instalador del juego acceda a http://linti.unlp.edu.ar/software/Rita . Puede instalarlo en un sistema operativo Windows o Linux con Java instalado (JDK 1.6+, descarguelo desde http://www.oracle.com/technetwork/java/javase/downloads/index.html). Para instalar descomprima el archivo descargado y ejecute install.bat en Windows o install-rita.sh en linux y se realizará el proceso de instalación.  
 ***
 
 RITA - Robot Inventor to Teach Algorithms
