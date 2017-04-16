@@ -41,10 +41,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.JSpinner;
-import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import mode.Training;
 
 import org.apache.commons.io.FileUtils;
 
@@ -53,6 +54,7 @@ import rita.settings.HelperEditor;
 import rita.settings.Language;
 import rita.settings.Settings;
 import rita.ui.component.exception.NoEnemiesException;
+import rita.util.RobotWithPositionTemp;
 import rita.widget.SourceCode;
 
 /**
@@ -85,7 +87,7 @@ public class DialogSelectEnemies extends CloseableJDialog {
 
 	public static void clean(){
 		dialogSelectEnemies = null;
-		mapRobotsTemp=new HashMap<String, DialogSelectEnemies.RobotWithPositionTemp>();
+		mapRobotsTemp=new HashMap<String, RobotWithPositionTemp>();
 		canSelectPosition=false;
 		positionComponents= new ArrayList<Component>();
 	}
@@ -391,54 +393,7 @@ public class DialogSelectEnemies extends CloseableJDialog {
 		}
 	}
 
-	protected class RobotWithPositionTemp {
-		private String robotName;
-		private int x;
-		private int y;
-		private int orientation;
-
-		public RobotWithPositionTemp(String robotName, int x, int y,
-				int orient) {
-			this.robotName = robotName;
-			this.x = x;
-			this.y = y;
-			this.orientation = orient;
-		}
-
-		public String getRobotName() {
-			return robotName;
-		}
-
-		public void setRobotName(String robotName) {
-			this.robotName = robotName;
-		}
-
-		public int getX() {
-			return x;
-		}
-
-		public void setX(int x) {
-			this.x = x;
-		}
-
-		public int getY() {
-			return y;
-		}
-
-		public void setY(int y) {
-			this.y = y;
-		}
-
-		public void setOrientation(Orientation orientationParam) {
-			this.orientation = orientationParam.getValue();
-
-		}
-
-		public int getOrientation() {
-			return orientation;
-		}
-
-	}
+	
 
 	private class PosicionRobotAction implements ActionListener {
 
@@ -447,7 +402,7 @@ public class DialogSelectEnemies extends CloseableJDialog {
 		public PosicionRobotAction(String robotName) {
 			if (mapRobotsTemp.get(robotName) == null) {
 				robotTemp = new RobotWithPositionTemp(robotName, -1, -1,
-						-1);
+						-1,null);
 				mapRobotsTemp.put(robotName, robotTemp);
 			}
 		}
@@ -529,7 +484,7 @@ public class DialogSelectEnemies extends CloseableJDialog {
 		HelperEditor.setEnemies(selectedRobots.toString());
 		closeDialog();
 		SourceCode.callBatalla(Integer.valueOf(roundsNumber),
-				initialPositions.toString());
+				initialPositions.toString(), Training.getInstance());
 	}
 
 	private void positionAsStringBuilder(StringBuilder initialPositions,
@@ -589,20 +544,6 @@ public class DialogSelectEnemies extends CloseableJDialog {
 		}
 	}
 
-	public enum Orientation {
-
-		NORTH(0), SOUTH(180), EAST(270), WEST(90);
-
-		int value;
-
-		Orientation(int i) {
-			value = i;
-		}
-
-		public int getValue() {
-			return value;
-		}
-
-	}
+	
 
 }

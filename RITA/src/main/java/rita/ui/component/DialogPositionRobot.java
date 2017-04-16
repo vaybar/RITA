@@ -36,8 +36,8 @@ import javax.swing.JTextField;
 
 import rita.settings.HelperEditor;
 import rita.settings.Language;
-import rita.ui.component.DialogSelectEnemies.Orientation;
-import rita.ui.component.DialogSelectEnemies.RobotWithPositionTemp;
+import rita.util.Orientation;
+import rita.util.RobotWithPositionTemp;
 
 public class DialogPositionRobot extends CloseableJDialog {
 

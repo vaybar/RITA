@@ -5,8 +5,8 @@ Rsrc-Class-Path: ./ xmlParserAPIs.jar jcommon-1.0.0-rc1.jar robocode.u
  core-1.7.3.6.jar robocode.jar TableLayout.jar robocode.host
  -1.7.3.6.jar jfreechart-1.0.0-rc1.jar jastyle.jar codesize-1.1.jar ro
  bocode.battle-1.7.3.6.jar jsyntaxpane-0.9.5-b29.jar commons-io-2.0.1.
- jar robocode.sound-1.7.3.6.jar ecj-3.8.1.jar laf-plugin-7.2.1.jar laf-widget-7.2.1.jar substance-7.2.1.jar trident-7.2.1.jar jastyle.jar
-Class-Path: . robocode.jar robocode.ui-1.7.3.6.jar picocontainer-2.8.jar roborumble.jar robocode.repository-1.7.3.6.jar robocode.core-1.7.3.6.jar robocode.host-1.7.3.6.jar codesize-1.1.jar robocode.battle-1.7.3.6.jar robocode.sound-1.7.3.6.jar ecj-3.8.1.jar TableLayout.jar laf-plugin-7.2.1.jar laf-widget-7.2.1.jar substance-7.2.1.jar trident-7.2.1.jar jastyle.jar commons-io-2.0.1.jar
+ jar robocode.sound-1.7.3.6.jar ecj-4.3.1.jar laf-plugin-7.2.1.jar laf-widget-7.2.1.jar substance-7.2.1.jar trident-7.2.1.jar jastyle.jar
+Class-Path: . robocode.jar robocode.ui-1.7.3.6.jar picocontainer-2.8.jar roborumble.jar robocode.repository-1.7.3.6.jar robocode.core-1.7.3.6.jar robocode.host-1.7.3.6.jar codesize-1.1.jar robocode.battle-1.7.3.6.jar robocode.sound-1.7.3.6.jar ecj-4.3.1.jar TableLayout.jar laf-plugin-7.2.1.jar laf-widget-7.2.1.jar substance-7.2.1.jar trident-7.2.1.jar jastyle.jar commons-io-2.0.1.jar jgroups.jar
 SplashScreen-Image: images/rita_con_titulo.jpg
 Rsrc-Main-Class: controller.WorkspaceController
 Main-Class: controller.WorkspaceController

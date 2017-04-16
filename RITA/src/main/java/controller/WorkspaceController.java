@@ -50,6 +50,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import rita.grammar.JavaCodeGenerator;
+import rita.net.NetworkConnection;
 import rita.rule.ComparatorRule;
 import rita.rule.DeclarationRule;
 import rita.rule.DeclarationUseRule;
@@ -542,6 +543,7 @@ public class WorkspaceController {
 	 */
 	private void initWorkspacePanel() {
 		sourceCode = SourceCode.getInstance();
+		sourceCode.setParent(frame);
 		workspace.addWorkspaceListener(sourceCode);
 		workspace.addWidget(sourceCode, true, true);
 
@@ -923,7 +925,15 @@ public class WorkspaceController {
 		// creating and showing this application's GUI.
 		new Splash();
 		Settings.setInstallPath(args[0]);
+		
 		setLookAndFeelThenRun();
+		//levanta la coneccion pero aún no se conecta con otros.
+		try {
+			NetworkConnection.start();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public static void initWithLangDefFilePath(final String langDefFilePath) {

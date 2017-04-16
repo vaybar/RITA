@@ -33,7 +33,7 @@
   
   
   	<properties>
-		<jdk.version>1.6</jdk.version>
+		<jdk.version>1.7</jdk.version>
 		<staging.dir>${project.build.directory}/staging</staging.dir>
     	<izpack-standalone.version>4.3.1</izpack-standalone.version>
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -63,12 +63,12 @@
     
     <!-- Dependencias de repositorio -->
     <!-- APIS que usa BEAUTYJ -->
-    <dependency>
+   <!--  <dependency>
 		<groupId>xerces</groupId>
 		<artifactId>xercesImpl</artifactId>
-		<!-- <version>2.4.0</version> -->
+		<version>2.4.0</version>
 		<version>2.9.1</version>
-	</dependency>
+	</dependency> -->
 	<dependency>
 		<groupId>xerces</groupId>
 		<artifactId>xmlParserAPIs</artifactId>
@@ -77,10 +77,11 @@
 	<dependency>
 	    <!-- Eclipse compiler -->
 		<groupId>org.eclipse.jdt.core.compiler</groupId>
-		<artifactId>ecj-3.8.1</artifactId>
-		<version>3.8.1</version>
+		<!-- <artifactId>ecj-3.8.1</artifactId> -->
+		<artifactId>ecj-4.3.1</artifactId>
+		<version>4.3.1</version>
 	    <scope>system</scope>
-	    <systemPath>${basedir}/src/main/resources/lib/compiler/ecj-3.8.1.jar</systemPath>
+	    <systemPath>${basedir}/src/main/resources/lib/compiler/ecj-4.3.1.jar</systemPath>
 	</dependency>
      <!-- LOOK & FEEL -->       
     <dependency>
@@ -253,6 +254,14 @@
       <artifactId>plexus-utils</artifactId>
       <version>1.5.6</version>
     </dependency>
+    
+    <!-- Multicast Confiable -->
+    <dependency>
+		<groupId>org.jgroups</groupId>
+		<artifactId>jgroups</artifactId>
+		<!-- <version>3.6.7.Final</version> -->
+		<version>3.4.3.Final</version>
+	</dependency>
 	
     <!-- 
     <dependency>

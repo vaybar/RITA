@@ -14,8 +14,13 @@
 
 package rita.battle;
 
+import java.util.Calendar;
+
+import mode.Competition;
+import mode.Training;
 import net.sf.robocode.core.Container;
 import net.sf.robocode.ui.dialog.ResultsDialog;
+import rita.settings.HelperEditor;
 import robocode.control.BattleSpecification;
 import robocode.control.BattlefieldSpecification;
 import robocode.control.RobocodeEngine;
@@ -26,8 +31,8 @@ import robocode.control.events.BattleErrorEvent;
 import robocode.control.events.BattleMessageEvent;
 
 /**
- * La clase Batalla dispara la ejecuciÔøΩn del motor de Robocode. En el campo de
- * batalla se ubicarÔøΩn los robots seleccionados para combartir
+ * La clase Batalla dispara la ejecuci?n del motor de Robocode. En el campo de
+ * batalla se ubicar?n los robots seleccionados para combartir
  * 
  * @author Vanessa Aybar Rosales
  * */
@@ -41,6 +46,8 @@ public class Batalla implements Runnable {
 	public static Integer roundsNumber;
 
 	public static String initialPosition;
+	public static String mode;
+	
 
 	public static final int NUMBER_OF_ROUNDS = 5;
 	public static final int MAX_NUMBER_OF_ROUNDS = 5;
@@ -52,22 +59,22 @@ public class Batalla implements Runnable {
 	}
 
 	/**
-	 * EjecuciÔøΩn principal de una Batalla en RITA
+	 * Ejecucion principal de una Batalla en RITA
 	 * 
 	 * @param arg
-	 *            [0] corresponde al path donde estÔøΩ instalada la
-	 *            aplicaciÔøΩn, es necesario para que le motor empiece a buscar
-	 *            robots a partir de este path
+	 *            [0] corresponde al path donde esta instalada la aplicacion, es
+	 *            necesario para que el motor empiece a buscar robots a partir
+	 *            de este path
 	 * @param arg
 	 *            [1] nombre del robot actual
 	 * @param arg
 	 *            [2] nivel de batalla seleccionado
 	 * @param arg
-	 *            [3] enemigos en el campo de batalla, podrÔøΩa no existir este
-	 *            parÔøΩmetro
+	 *            [3] enemigos en el campo de batalla, podria no existir este
+	 *            parametro
 	 * @param arg
 	 *            [3] posiciones iniciales de todos los robots en el campo de
-	 *            batalla, podrÔa no existir este par·metro
+	 *            batalla, podra no existir este parametro
 	 * */
 	public static void main(String... args) {
 		installPath = args[0];
@@ -78,6 +85,7 @@ public class Batalla implements Runnable {
 		try {
 			roundsNumber = Integer.parseInt(args[3]);
 			initialPosition = args[4];
+			mode = args[5];
 		} catch (NumberFormatException e) {
 			roundsNumber = Batalla.NUMBER_OF_ROUNDS;
 		}
@@ -86,15 +94,18 @@ public class Batalla implements Runnable {
 	}
 
 	public void run() {
-		RobocodeEngine engine = new RobocodeEngine(
-				new java.io.File(installPath)); // buscar robots en el
-												// directorio de instalacion
+		RobocodeEngine engine = new RobocodeEngine(new java.io.File(installPath)); // buscar
+																					// robots
+																					// en
+																					// el
+																					// directorio
+																					// de
+																					// instalacion
 
 		// engine.addBattleListener(new BattleObserver());
 		// Setup the battle specification
 
-		BattlefieldSpecification battlefield = new BattlefieldSpecification(
-				800, 600); // 800x600
+		BattlefieldSpecification battlefield = new BattlefieldSpecification(800, 600); // 800x600
 
 		RobotSpecification[] selectedRobots = null;
 		if (enemiesSelected != null && enemiesSelected.split(",").length > 1) {
@@ -102,17 +113,34 @@ public class Batalla implements Runnable {
 		} else
 			selectedRobots = engine.getLocalRepository(robotName + "*");
 
-		BattleSpecification battleSpec = new BattleSpecification(roundsNumber,
-				battlefield, selectedRobots);
+		// prueba para enviar 5 batallas de 1 round por si se quieren cambiar
+		// par·metros..
+		// roundsNumber=1;
+		BattleSpecification battleSpec = null;
+		if (mode.equals(Training.getInstance().toString()))
+			battleSpec = new BattleSpecification(roundsNumber, battlefield, selectedRobots);
+		else 
+			battleSpec = new BattleSpecification(1, battlefield, selectedRobots);
 		// Show the Robocode battle view
 		engine.setVisible(true);
 		// Run our specified battle and let it run till it is over
 
-		// TODO Como segundo par√°metro se le pueden pasar las posiciones
+		// TODO Como segundo par·metro se le pueden pasar las posiciones
 		// iniciales separadas por coma.
 		// Tres valores por robot.
-		if (initialPosition != null)
-			engine.runBattle(battleSpec, initialPosition, true);
+		if (initialPosition != null) {
+			String[] initPosParts = initialPosition.split("-");
+			if (mode.equals(Competition.getInstance().toString())){
+				for (int i = 0; i < roundsNumber; i++) {
+					System.out.println("posiciones iniciales..." + initPosParts[i]);
+					engine.runBattle(battleSpec, initPosParts[i], true);
+				}
+
+			} else {
+				engine.runBattle(battleSpec, initPosParts[0], true);
+			}
+		}
+
 		else
 			engine.runBattle(battleSpec, true);
 		// Cleanup our RobocodeEngine
@@ -145,11 +173,9 @@ class BattleObserver extends BattleAdaptor {
 		// + result.getScore());
 		// }
 
-		final ResultsDialog dialog = Container
-				.getComponent(ResultsDialog.class);
+		final ResultsDialog dialog = Container.getComponent(ResultsDialog.class);
 
-		dialog.setup(event.getSortedResults(), event.getBattleRules()
-				.getNumRounds());
+		dialog.setup(event.getSortedResults(), event.getBattleRules().getNumRounds());
 		// System.exit(0);
 		// packCenterShow(dialog, true);
 

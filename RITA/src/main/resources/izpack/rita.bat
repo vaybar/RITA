@@ -1,1 +1,1 @@
-cmd.exe /C java -jar "%CD%\lib\rita.jar" "%CD%"
+cmd.exe /C java -Djava.net.preferIPv4Stack=true -jar "%CD%\lib\rita.jar" "%CD%"

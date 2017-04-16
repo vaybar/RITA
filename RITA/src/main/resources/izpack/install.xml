@@ -111,7 +111,11 @@
 			<file src="dependency/roborumble.jar" targetdir="$INSTALL_PATH/lib" />
 			
 			<!-- Archivos del ambiente eclipse-->
-			<file src="dependency/ecj-3.8.1.jar" targetdir="$INSTALL_PATH/lib" />
+			<file src="dependency/ecj-4.3.1.jar" targetdir="$INSTALL_PATH/lib" />
+
+			<!-- Comunicacion en red -->
+			<file src="dependency/jgroups.jar" targetdir="$INSTALL_PATH/lib" />
+			
 
 			<!-- Archivos de L&F-->
 			<file src="dependency/laf-plugin-7.2.1.jar" targetdir="$INSTALL_PATH/lib" />
@@ -162,7 +166,7 @@
 			<file src="robots/sample/Mambo.class" targetdir="$INSTALL_PATH/robots/sample" />
 			<file src="robots/sample/Mambo.java" targetdir="$INSTALL_PATH/robots/sample" />
 			
- 			<file src="robots/misrobots" targetdir="$INSTALL_PATH/robots" />
+ 			<file src="robots/misrobots/readme.txt" targetdir="$INSTALL_PATH/robots/misrobots/readme.txt" />
 			<file src="config/robocode.properties" targetdir="$INSTALL_PATH/config" />
 
 

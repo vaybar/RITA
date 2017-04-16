@@ -14,6 +14,7 @@
 
 package rita.settings;
 
+import mode.Mode;
 
 /**
  * HelperEditor almacena informacion sobre el robot siendo editado actualmente.
@@ -27,6 +28,7 @@ public class HelperEditor {
 	public static String currentRobotName="";
 	public static String currentRobotPackage="";
 	public static String currentRobotType="advanced";
+	public static Mode CURRENT_MODE;
 //	public static String currentTeamName="";
 //	public static HashMap<String, String> currentsRobotsInTeam= new HashMap<String, String>();
 
@@ -63,5 +65,23 @@ public class HelperEditor {
 		// TODO devolver el valor real que corresponde
 		return 800;
 	}
+	
+	public static void setCurrentMode(Mode m){
+		CURRENT_MODE=m;
+	}
+	
+	public static Mode getCurrentMode(){
+		return CURRENT_MODE;
+	}
+
+	/*public static boolean selectedGroup() {
+		return selectedGroup!=null;
+	}
+
+	public static void setSelectedGroup(String selectedGroup) {
+		HelperEditor.selectedGroup = selectedGroup;
+	}
+	*/
+	
 	
 }
