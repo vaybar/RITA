@@ -2,7 +2,9 @@
 Para descargar el instalador del juego acceda a http://linti.unlp.edu.ar/software/Rita . Puede instalarlo en un sistema operativo Windows o Linux con Java instalado. 
 
 JDK 1.6 : https://www.oracle.com/technetwork/java/javaee/downloads/java-ee-sdk-6u3-jdk-6u29-downloads-523388.html
+
 JDK 1.7 : https://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html
+
 JDK 1.8 : https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 
 
